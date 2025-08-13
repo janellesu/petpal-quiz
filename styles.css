@@ -1,0 +1,68 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Cherry Bomb One", system-ui;
+}
+header {
+    background-color: rgb(76, 145, 201);
+}
+.hero {
+    height: 60vh;
+    background-color: rgb(86, 159, 255);
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+}
+.hero h1 {
+    text-align: center;
+    padding-top: 3rem;
+    color:  rgb(255, 207, 153);
+    font-size: 5rem;
+    font-weight: 300;
+}
+.hero p {
+    text-align: center;
+}
+
+button {
+    background-color: rgb(76, 145, 201);
+    border: none;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+header {
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+}
+header h1 {
+    color: white;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    z-index: 100;
+}
+nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+nav a {
+    color: white;
+    padding: 1rem;
+
+}
+body {
+    background-color: rgb(255, 207, 153);
+}
+main {
+    margin-right: 5%;
+    margin-left: 5%;
+}
+article {
+    padding: 3rem, 1rem;
+}

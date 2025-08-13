@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PetPal</title>
     <link rel="stylesheet" href="styles.css"">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -20,18 +23,17 @@
     <section class="hero">  
         <h1>Welcome to PetPal!</h1>
         <p>Find your purrfect furry friend today</p>
-        <button><a href="#">Take the quiz!</a></button>
+        <button><a href="#quiz">Take the quiz!</a></button>
     </section>
     <main>
         <button><a href="#">Learn how it works</a></button>
         <article class="quiz-container">
-            <h1>Pet Matcher</h1>
+            <h1 id="#quiz">Pet Matcher</h1>
             <section class="quiz">
                 <form action="#" method="POST">
                     <fieldset class="quiz-question">
                         <legend>1. How active are you?</legend>
                         
-                        
                         <label for="very-active">
                             <input type="radio" name="activity" id="very-active" value="very-active">
                             Very active
@@ -39,6 +41,10 @@
                         <label for="somewhat-active">
                             <input type="radio" name="activity" id="somewhat-active" value="somewhat-active">
                             Somewhat active
+                        </label>
+                        <label for="">
+                            <input type="radio" name="activity" id="not-active">
+                            Not active at all
                         </label>
                     </fieldset>
                     <fieldset class="quiz-question">
@@ -53,6 +59,37 @@
                             <input type="radio" name="activity" id="somewhat-active" value="somewhat-active">
                             Somewhat active
                         </label>
+
+                    </fieldset>
+                    <fieldset class="quiz-question">
+                        <legend>1. How active are you?</legend>
+                        
+                        <label for="very-active">
+                            <input type="radio" name="activity" id="very-active" value="very-active">
+                            Very active
+                        </label>
+                        <label for="somewhat-active">
+                            <input type="radio" name="activity" id="somewhat-active" value="somewhat-active">
+                            Somewhat active
+                        </label>
+                        <label for="">
+                            <input type="radio" name="" id="">
+                        </label>
+                    </fieldset>
+                    <fieldset class="quiz-question">
+                        <legend>1. How active are you?</legend>
+                        
+                        <label for="very-active">
+                            <input type="radio" name="activity" id="very-active" value="very-active">
+                            Very active
+                        </label>
+                        <label for="somewhat-active">
+                            <input type="radio" name="activity" id="somewhat-active" value="somewhat-active">
+                            Somewhat active
+                        </label>
+                        <label for="">
+                            <input type="radio" name="" id="">
+                        </label>
                     </fieldset>
                     <fieldset class="quiz-question">
                         <legend>1. How active are you?</legend>
@@ -66,31 +103,8 @@
                             <input type="radio" name="activity" id="somewhat-active" value="somewhat-active">
                             Somewhat active
                         </label>
-                    </fieldset>
-                    <fieldset class="quiz-question">
-                        <legend>1. How active are you?</legend>
-                        
-                        
-                        <label for="very-active">
-                            <input type="radio" name="activity" id="very-active" value="very-active">
-                            Very active
-                        </label>
-                        <label for="somewhat-active">
-                            <input type="radio" name="activity" id="somewhat-active" value="somewhat-active">
-                            Somewhat active
-                        </label>
-                    </fieldset>
-                    <fieldset class="quiz-question">
-                        <legend>1. How active are you?</legend>
-                        
-                        
-                        <label for="very-active">
-                            <input type="radio" name="activity" id="very-active" value="very-active">
-                            Very active
-                        </label>
-                        <label for="somewhat-active">
-                            <input type="radio" name="activity" id="somewhat-active" value="somewhat-active">
-                            Somewhat active
+                        <label for="">
+                            <input type="radio" name="" id="">
                         </label>
                     </fieldset>
                     <button type="submit">Find your match!</button>
@@ -101,6 +115,7 @@
         </article>
         <article id="About">
             <h2>About</h2>
+            <p>Lorem ipsum</p>
         </article>
         <article id="Our Mission">
             <h2>Our Mission</h2>
