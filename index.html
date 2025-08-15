@@ -7,16 +7,19 @@
     <link rel="stylesheet" href="styles.css"">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Comic+Relief:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <h1>PetPal</h1>
         <nav>
             <ul>
-                <li><a href="#">About</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="#About">About</a></li>
+                <li><a href="#Our Mission">Our Mission</a></li>
+                <li><a href="#How it Works">How it Works</a></li>
             </ul>
         </nav>
     </header>  
@@ -32,81 +35,165 @@
             <section class="quiz">
                 <form action="#" method="POST">
                     <fieldset class="quiz-question">
-                        <legend>1. How active are you?</legend>
+                        <legend>1. How active is your lifestyle?</legend>
                         
                         <label for="very-active">
                             <input type="radio" name="activity" id="very-active" value="very-active">
-                            Very active
+                            Very active, I love exercise and go outdoors often
                         </label>
                         <label for="somewhat-active">
                             <input type="radio" name="activity" id="somewhat-active" value="somewhat-active">
-                            Somewhat active
+                            Somewhat active, I like moderate daily activity
                         </label>
                         <label for="">
                             <input type="radio" name="activity" id="not-active">
-                            Not active at all
+                            Not active at all, I prefer to stay indoors
                         </label>
                     </fieldset>
+
                     <fieldset class="quiz-question">
-                        <legend>1. How active are you?</legend>
+                        <legend>2. What size home do you live in?</legend>
                         
-                        
-                        <label for="very-active">
-                            <input type="radio" name="activity" id="very-active" value="very-active">
-                            Very active
+                        <label for="small-home">
+                            <input type="radio" name="home" id="small-home" value="small-home">
+                            Small apartment or condo
                         </label>
-                        <label for="somewhat-active">
-                            <input type="radio" name="activity" id="somewhat-active" value="somewhat-active">
-                            Somewhat active
+                        <label for="medium-home">
+                            <input type="radio" name="home" id="medium-home" value="medium-home">
+                            Medium-sized house with limited yard
+                        </label>
+                        <label for="big-home">
+                            <input type="radio" name="home" id="big-home" value="big-home">
+                            Large house with spacious yard or outdoor access
                         </label>
 
                     </fieldset>
                     <fieldset class="quiz-question">
-                        <legend>1. How active are you?</legend>
+                        <legend>3. How much time can you dedicate daily to pet care and play?</legend>
                         
-                        <label for="very-active">
-                            <input type="radio" name="activity" id="very-active" value="very-active">
-                            Very active
+                        <label for="very-little-time">
+                            <input type="radio" name="time" id="very-little-time" value="very-little-time">
+                            Less than 1 hour
                         </label>
-                        <label for="somewhat-active">
-                            <input type="radio" name="activity" id="somewhat-active" value="somewhat-active">
-                            Somewhat active
+                        <label for="enough-time">
+                            <input type="radio" name="time" id="enough-time" value="enough-time">
+                            1 to 3 hours
                         </label>
-                        <label for="">
-                            <input type="radio" name="" id="">
+                        <label for="lots-of-time">
+                            <input type="radio" name="time" id="lots-of-time" value="lots-of-time">
+                            More than 3 hours
                         </label>
                     </fieldset>
                     <fieldset class="quiz-question">
-                        <legend>1. How active are you?</legend>
+                        <legend>4. Do you have experience caring for pets?</legend>
                         
-                        <label for="very-active">
-                            <input type="radio" name="activity" id="very-active" value="very-active">
-                            Very active
+                        <label for="no-experience">
+                            <input type="radio" name="experience" id="no-experience" value="no-experience">
+                            No, I'm a first-time pet owner
                         </label>
-                        <label for="somewhat-active">
-                            <input type="radio" name="activity" id="somewhat-active" value="somewhat-active">
-                            Somewhat active
+                        <label for="some-experience">
+                            <input type="radio" name="experience" id="some-experience" value="some-experience">
+                            Some experience with pets
                         </label>
-                        <label for="">
-                            <input type="radio" name="" id="">
+                        <label for="experienced">
+                            <input type="radio" name="experience" id="experienced" value="experienced">
+                            Experienced pet owner
                         </label>
                     </fieldset>
                     <fieldset class="quiz-question">
-                        <legend>1. How active are you?</legend>
+                        <legend>5. What type of pet are you interested in?</legend>
                         
-                        
-                        <label for="very-active">
-                            <input type="radio" name="activity" id="very-active" value="very-active">
-                            Very active
+                        <label for="dog-interest">
+                            <input type="radio" name="pet-interest" id="dog-interest" value="dog-interest">
+                            Dogs
                         </label>
-                        <label for="somewhat-active">
-                            <input type="radio" name="activity" id="somewhat-active" value="somewhat-active">
-                            Somewhat active
+                        <label for="cat-interest">
+                            <input type="radio" name="pet-interest" id="cat-interest" value="cat-interest">
+                            Cats
                         </label>
-                        <label for="">
-                            <input type="radio" name="" id="">
+                        <label for="other-interest">
+                            <input type="radio" name="pet-interest" id="other-interest" value="other-interest">
+                            Other (small mammals, birds, reptiles)
                         </label>
                     </fieldset>
+                    <fieldset class="quiz-question">
+                        <legend>6. How important is grooming and maintenance to you?</legend>
+                        
+                       <label for="low-maintenance">
+                            <input type="radio" name="grooming-importance" id="low-maintenance" value="low-maintenance">
+                            I prefer low-maintenance pets
+                        </label>
+                        <label for="moderate-maintenance">
+                            <input type="radio" name="grooming-importance" id="moderate-maintenance" value="moderate-maintenance">
+                            I'm okay with moderate grooming needs
+                        </label>
+                        <label for="high-maintenance">
+                            <input type="radio" name="grooming-importance" id="high-maintenance" value="high-maintenance">
+                            I enjoy regular grooming and care routines
+                        </label>
+                    </fieldset>
+                    <fieldset class="quiz-question">
+                        <legend>7. Are there children or other pets in your household?</legend>
+                        
+                       <label for="children-and-pets">
+                            <input type="radio" name="children-or-pets" id="children-and-pets" value="children-and-pets">
+                            Yes, both children under 12 and other pets
+                        </label>
+                        <label for="children-or-other-pets">
+                            <input type="radio" name="children-or-pets" id="children-or-other-pets" value="children-or-other-pets">
+                            Yes, either children under 12 or other pets
+                        </label>
+                        <label for="no-children-or-pets">
+                            <input type="radio" name="children-or-pets" id="no-children-or-pets" value="no-children-or-pets">
+                            No, I live alone or with adults only
+                        </label>
+                    </fieldset>
+                    <fieldset class="quiz-question">
+                        <legend>8. Do you have any allergies to animals?</legend>
+                        
+                       <label for="allergic">
+                            <input type="radio" name="allergies" id="allergic" value="allergic">
+                            Yes, to fur or dander
+                        </label>
+                        <label for="not-allergic">
+                            <input type="radio" name="allergies" id="not-allergic" value="not-allergic">
+                            No allergies
+                        </label>
+                    </fieldset>
+                    <fieldset class="quiz-question">
+                        <legend>9. What temperament do you prefer in a pet?</legend>
+                        
+                       <label for="calm-pet">
+                            <input type="radio" name="pet-temper" id="calm-pet" value="calm-pet">
+                            Calm and relaxed
+                        </label>
+                        <label for="playful-pet">
+                            <input type="radio" name="pet-temper" id="playful-pet" value="playful-pet">
+                            Playful and energetic
+                        </label>
+                        <label for="protective-pet">
+                            <input type="radio" name="pet-temper" id="protective-pet" value="protective-pet">
+                            Protective and alert
+                        </label>
+                    </fieldset>
+                    <fieldset class="quiz-question">
+                        <legend>10. How much noise can you tolerate from your pet?</legend>
+                        
+                       <label for="quiet-noise">
+                            <input type="radio" name="pet-noise" id="quiet-noise" value="quiet-noise">
+                            Prefer a quiet pet
+                        </label>
+                        <label for="moderate-noise">
+                            <input type="radio" name="pet-noise" id="moderate-noise" value="moderate-noise">
+                            Can tolerate moderate noise
+                        </label>
+                        <label for="noisy">
+                            <input type="radio" name="pet-noise" id="noisy" value="noisy">
+                            Don't mind noisy pets
+                        </label>
+                    </fieldset>
+                
+
                     <button type="submit">Find your match!</button>
                 </form>
                 
