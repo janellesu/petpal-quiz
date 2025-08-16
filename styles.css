@@ -7,8 +7,12 @@
 h1, h2, h3 {
     font-family: "Cherry Bomb One", system-ui;
 }
-p, a, button {
+p, a, button, ol {
     font-family: "Sour Gummy";
+    font-size: 1.25rem;
+}
+p, ol {
+    line-height: 2rem;
 }
 h1, h2 {
     font-size: 2.25rem;
@@ -23,6 +27,7 @@ header {
     background-color: rgb(86, 159, 255);
     border-bottom-left-radius: 2rem;
     border-bottom-right-radius: 2rem;
+    box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.2);
 }
 .hero h1 {
     text-align: center;
@@ -81,17 +86,21 @@ nav a {
 
 }
 body {
-    background-color: rgb(255, 207, 153);
+    background-color: rgb(255, 255, 255);
 }
 main {
     margin-right: 5%;
     margin-left: 5%;
 }
 article {
-    padding: 3rem 1rem;
+    padding: 2rem 1rem;
 }
 .quiz {
     font-family: "Sour Gummy", sans-serif;
+    background-color: rgb(255, 207, 153);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 fieldset {
@@ -104,7 +113,7 @@ fieldset {
 legend {
     font-weight: 700;
     font-size: 1.75rem;
-    margin: 1rem;
+    margin: 2rem 0;
 }
 .quiz-question label {
     margin: 1.5rem;

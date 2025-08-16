@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PetPal</title>
-    <link rel="stylesheet" href="styles.css"">
+    <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Comic+Relief:wght@400;700&display=swap" rel="stylesheet">
@@ -31,22 +31,22 @@
     <main>
         <button><a href="#">Learn how it works</a></button>
         <article class="quiz-container">
-            <h1 id="#quiz">Pet Matcher</h1>
+            <h1 id="quiz">Pet Matcher</h1>
             <section class="quiz">
-                <form action="#" method="POST">
+                <form>
                     <fieldset class="quiz-question">
                         <legend>1. How active is your lifestyle?</legend>
                         
                         <label for="very-active">
-                            <input type="radio" name="activity" id="very-active" value="very-active">
+                            <input type="radio" name="activity" id="very-active" value="very-active" required>
                             Very active, I love exercise and go outdoors often
                         </label>
                         <label for="somewhat-active">
                             <input type="radio" name="activity" id="somewhat-active" value="somewhat-active">
                             Somewhat active, I like moderate daily activity
                         </label>
-                        <label for="">
-                            <input type="radio" name="activity" id="not-active">
+                        <label for="not-active">
+                            <input type="radio" name="activity" id="not-active" value="not-active">
                             Not active at all, I prefer to stay indoors
                         </label>
                     </fieldset>
@@ -55,7 +55,7 @@
                         <legend>2. What size home do you live in?</legend>
                         
                         <label for="small-home">
-                            <input type="radio" name="home" id="small-home" value="small-home">
+                            <input type="radio" name="home" id="small-home" value="small-home" required>
                             Small apartment or condo
                         </label>
                         <label for="medium-home">
@@ -72,7 +72,7 @@
                         <legend>3. How much time can you dedicate daily to pet care and play?</legend>
                         
                         <label for="very-little-time">
-                            <input type="radio" name="time" id="very-little-time" value="very-little-time">
+                            <input type="radio" name="time" id="very-little-time" value="very-little-time" required>
                             Less than 1 hour
                         </label>
                         <label for="enough-time">
@@ -88,7 +88,7 @@
                         <legend>4. Do you have experience caring for pets?</legend>
                         
                         <label for="no-experience">
-                            <input type="radio" name="experience" id="no-experience" value="no-experience">
+                            <input type="radio" name="experience" id="no-experience" value="no-experience" required>
                             No, I'm a first-time pet owner
                         </label>
                         <label for="some-experience">
@@ -104,7 +104,7 @@
                         <legend>5. What type of pet are you interested in?</legend>
                         
                         <label for="dog-interest">
-                            <input type="radio" name="pet-interest" id="dog-interest" value="dog-interest">
+                            <input type="radio" name="pet-interest" id="dog-interest" value="dog-interest" required>
                             Dogs
                         </label>
                         <label for="cat-interest">
@@ -120,7 +120,7 @@
                         <legend>6. How important is grooming and maintenance to you?</legend>
                         
                        <label for="low-maintenance">
-                            <input type="radio" name="grooming-importance" id="low-maintenance" value="low-maintenance">
+                            <input type="radio" name="grooming-importance" id="low-maintenance" value="low-maintenance" required>
                             I prefer low-maintenance pets
                         </label>
                         <label for="moderate-maintenance">
@@ -136,7 +136,7 @@
                         <legend>7. Are there children or other pets in your household?</legend>
                         
                        <label for="children-and-pets">
-                            <input type="radio" name="children-or-pets" id="children-and-pets" value="children-and-pets">
+                            <input type="radio" name="children-or-pets" id="children-and-pets" value="children-and-pets" required>
                             Yes, both children under 12 and other pets
                         </label>
                         <label for="children-or-other-pets">
@@ -152,7 +152,7 @@
                         <legend>8. Do you have any allergies to animals?</legend>
                         
                        <label for="allergic">
-                            <input type="radio" name="allergies" id="allergic" value="allergic">
+                            <input type="radio" name="allergies" id="allergic" value="allergic" required>
                             Yes, to fur or dander
                         </label>
                         <label for="not-allergic">
@@ -164,11 +164,11 @@
                         <legend>9. What temperament do you prefer in a pet?</legend>
                         
                        <label for="calm-pet">
-                            <input type="radio" name="pet-temper" id="calm-pet" value="calm-pet">
+                            <input type="radio" name="pet-temper" id="calm-pet" value="calm-pet" required>
                             Calm and relaxed
                         </label>
                         <label for="playful-pet">
-                            <input type="radio" name="pet-temper" id="playful-pet" value="playful-pet">
+                            <input type="radio" name="pet-temper" id="playful-pet" value="playful-pet" required>
                             Playful and energetic
                         </label>
                         <label for="protective-pet">
@@ -180,7 +180,7 @@
                         <legend>10. How much noise can you tolerate from your pet?</legend>
                         
                        <label for="quiet-noise">
-                            <input type="radio" name="pet-noise" id="quiet-noise" value="quiet-noise">
+                            <input type="radio" name="pet-noise" id="quiet-noise" value="quiet-noise" required>
                             Prefer a quiet pet
                         </label>
                         <label for="moderate-noise">
@@ -193,28 +193,34 @@
                         </label>
                     </fieldset>
                 
-
                     <button type="submit">Find your match!</button>
                 </form>
                 
             </section>
-            
-        </article>
+        <section class="result">
+            <h1>Your PetPal:</h1>
+        </section>
         <article id="About">
             <h2>About</h2>
-            <p>Lorem ipsum</p>
+            <p>PetPal is an interactive web app that connects future pet owners with their ideal furry (or feathered!) companion and provides a personalized care guide to ensure a happy, healthy life together. Whether you're a first-time adopter or an experienced pet parent, we make finding — and caring for — your perfect match simple and fun.</p>
         </article>
         <article id="Our Mission">
             <h2>Our Mission</h2>
+            <p>We believe every pet deserves a loving home and every adopter deserves the tools to care for their new companion with confidence. Our mission is to improve pet adoption success rates by matching people with pets that fit their lifestyle and providing tailored guidance to help them thrive from day one.</p>
         </article>
         <article id="How it Works">
             <h2>How it Works</h2>
+            <ol>
+                <li>Take the Quiz — Answer a few quick questions about your lifestyle, home, and preferences.</li>
+                <li>Get Your Match — We'll suggest a pet profile that fits you best.</li>
+                <li>Receive Your Care Guide — Get a personalized guide covering nutrition, exercise, grooming, and health tips for your new friend.</li>
+            </ol>
         </article>
 
     </main>
     <footer>
-        <p>Description</p>
+        <p>PetPal, for AnimalHack2025</p>
     </footer>
-    
+    <script src="script.js"></script>
 </body>
 </html>
