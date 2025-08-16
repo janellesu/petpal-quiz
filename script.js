@@ -21,5 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
             p.textContent = `${question}: ${answer}`;
             resultContainer.appendChild(p);
         }
+        // TODO: make results more user friendly
     })
 })
+
+// TODO: Match answers to pet rec and pet care
