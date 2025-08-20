@@ -31,7 +31,7 @@ let scores = {
     labrador: 0,
     golden: 0,
     frenchBulldog: 0,
-    germanShepherd: 0,
+    german: 0,
     poodle: 0,
     pom: 0,
 
@@ -49,6 +49,40 @@ let scores = {
     hamster: 0,
     parrot: 0,
     gecko: 0
+};
+const categories = {
+    //Dogs 
+    largeDogs: ["labrador", "golden", "german", "poodle"],
+    smallDogs: ["frenchBulldog", "pom"],
+
+    //Cats
+    activeCats: ["siamese", "maineCoon", "exotic"],
+    notActiveCats: ["persian", "american"],
+
+    //other pets
+    otherPets: ["rabbit", "hamster", "parrot", "gecko"],
+
+    //maintenance
+    lowMaintenance: ["american", "hamster", "gecko"],
+    modMaintenance: ["labrador", "golden", "frenchBulldog", "siamese", "exotic", "rabbit"],
+    highMaintenance: ["german", "pom", "poodle", "persian", "maineCoon", "parrot"],
+
+    //friendliness
+    friendly: ["labrador", "golden", "frenchBulldog", "german", "poodle", "siamese", "maineCoon", "parrot"],
+    independent: ["pom", "persian", "exotic", "american", "rabbit", "hamster", "gecko"],
+
+    //allergies
+    hypoallergenic: ["poodle", "siamese", "gecko"],
+
+    //temper 
+    calm: ["golden", "frenchBulldog", "poodle", "persian", "maineCoon", "exotic", "american", "rabbit", "gecko"],
+    playful: ["labrador", "golden", "pom", "siamese", "maineCoon", "hamster", "parrot"],
+    protective: ["labrador", "german"],
+
+    //noise
+    lowNoise: ["frenchBulldog", "persian", "exotic", "american", "rabbit", "hamster"],
+    mediumNoise: ["labrador", "golden", "poodle", "maineCoon"],
+    noisy: ["german", "pom", "siamese", "parrot"]
 };
 
 const scoring = {
