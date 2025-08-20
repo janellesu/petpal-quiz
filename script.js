@@ -5,7 +5,25 @@ document.addEventListener("DOMContentLoaded", () => {
         event.preventDefault();
         const formData = new FormData(quizForm);
         const answers = Object.fromEntries(formData.entries());
+
+        for(let pet in scores) {
+            scores[pet] = 0;
+        }
+
+        for(const [question, answer] of Object.entries(answers)) {
+            if(scoring[question] && scoring[question][answer]) {
+                const catObj = scoring[question][answer];
+                for(const [category, points] of Object.entries(catObj)) {
+                    if (categories[category]) {
+                        categories[category].forEach(pet => {
+                            scores[pet] += points;
+                        });
+                    }
+                }
+            }
+        }
         
+        const topPets = bestPet(scores);
         // Clear previous result
         let resultContainer = document.querySelector("#results");
         if(!resultContainer) { //checks if null so no previous results
@@ -13,7 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
             resultContainer.id = "results"; //assigns results id to div
             quizSection.insertAdjacentElement("afterend", resultContainer); //appends after quiz section
         }
-        resultContainer.innerHTML = "<h2>Your Answer:</h2>";
+        resultContainer.innerHTML = `
+        <h2>Your petPal match:</h2>
+        <p>We recommend: ${topPets.join(", ")}</p>`;
 
         //loops through answers and displays
         for (const [question, answer] of Object.entries(answers)) {
@@ -137,3 +157,26 @@ const scoring = {
         "noisy": {noisy: 3, mediumNoise: 3, lowNoise: 3}
     }
 };
+
+function bestPet(scores) {
+    let bestScore = -Infinity;
+    let winners = [];
+
+    for(const [pet, score] of Object.entries(scores)){
+        if(pet > bestScore){
+            bestScore = score;
+            winners = [pet];
+        }
+        else if (score === bestScore) {
+            winners.push(pet);
+        }
+    }
+    return winners;
+}
+const topPets = bestPet(scores);
+if(topPets.length == 1){
+    console.log("Best match:", topPets[0]);
+}
+else {
+    console.log("Multiple matches:", topPets.join(", "));
+}
