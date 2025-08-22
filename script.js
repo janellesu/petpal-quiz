@@ -34,14 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
         resultContainer.innerHTML = `
         <h2>Your petPal match:</h2>
         <p>We recommend: ${topPets.join(", ")}</p>`;
-
-        //ToDO: fix answer display.
-        //loops through answers and displays
-        for (const [question, answer] of Object.entries(answers)) {
-            const p = document.createElement("p");
-            p.textContent = `${question}: ${answer}`;
-            resultContainer.appendChild(p);
-        }
     })
 })
 
@@ -163,8 +155,164 @@ const scoring = {
         "noisy": {noisy: 3, mediumNoise: 3, lowNoise: 3}
     }
 
-
 };
+
+//petcare guides, each has a overview, nutrition, exercise, healthcare, and grooming section
+const petCare = {
+    //dogs
+    labrador: {
+        overview: "Labradors are intelligent, friendly, and energetic dogs that thrive with family and active lifestyles. They have an average lifespan of 10-12 years. The average weight for males is 65-80 lb (29-36 kg) and for females is 55-70 lb (25-32 kg)",
+        nutrition: {
+            overview: "High-quality dry dog food with balanced protein, fats, and carbs.",
+            dailyIntake: "2.5-3 cups per day, divided into two meals.",
+            supplements: "Glucosamine and omega-3 fatty acids for joint and coat health."
+        },
+        exercise: "Highly energetic—needs, at least 1 to 2 hours of physical and mental stimulation daily (walks, fetch, swimming).",
+        healthcare: {
+            commonIssues: "Hip dysplasia, elbow dysplasia, obesity.",
+            preventiveMeasures: "Regular vet check-ups, maintain healthy weight, routine eye exams."
+        },
+        grooming: "Moderate shedding; brush 2-3 times per week and bathe as needed."
+    },
+    golden: {
+        overview: "Golden Retrievers are friendly, intelligent, and loyal. They love human interaction and outdoor activity.",
+        nutrition: {
+            overview: "High-quality dry dog food with balanced protein, fats, and carbs.",
+            dailyIntake: "2.5-3 cups per day, divided into two meals.",
+            supplements: "Omega-3 fatty acids for coat health and joint support."
+        },
+        exercise: "At least 1-2 hours of daily activity, including walks, play, and swimming.",
+        healthcare: {
+            commonIssues: "Hip dysplasia, elbow dysplasia, skin allergies, heart conditions.",
+            preventiveMeasures: "Regular vet check-ups, maintain healthy weight, routine eye exams."
+        },
+        grooming: "Heavy shedding; brush 3-4 times per week and bathe as needed."
+    },
+    frenchBulldog: {
+        overview: "French Bulldogs are affectionate, playful, and low-energy dogs. They adapt well to apartment living.",
+        nutrition: {
+            overview: "High-quality dry dog food appropriate for small breeds.",
+            dailyIntake: "1-1.5 cups per day, divided into two meals.",
+            supplements: "Glucosamine and omega-3 fatty acids for joint and coat health."
+        },
+        exercise: "Short daily walks and light play; avoid overheating due to brachycephalic face.",
+        healthcare: {
+            commonIssues: "Brachycephalic syndrome, hip dysplasia, obesity.",
+            preventiveMeasures: "Regular vet check-ups, maintain healthy weight, avoid excessive heat."
+        },
+        grooming: "Low shedding; brush 1-2 times per week and bathe as needed."
+    },
+    german: {
+        overview: "German Shepherds are intelligent, loyal, and versatile working dogs. They require consistent training and mental stimulation.",
+        nutrition: {
+            overview: "High-quality dry dog food for large, active breeds.",
+            dailyIntake: "3-4 cups per day, divided into two meals.",
+            supplements: "Glucosamine and omega-3 fatty acids for joint and coat health."
+        },
+        exercise: "At least 1-2 hours of daily activity, including walks, runs, and training exercises.",
+        healthcare: {
+            commonIssues: "Hip dysplasia, elbow dysplasia, degenerative myelopathy.",
+            preventiveMeasures: "Regular vet check-ups, maintain healthy weight, routine eye exams."
+        },
+        grooming: "Moderate shedding; brush 2-3 times per week and bathe as needed."
+    },
+    poodle: {
+        overview: "Standard Poodles are intelligent, active, and hypoallergenic. They excel in obedience and dog sports.",
+        nutrition: {
+            overview: "High-quality dry dog food with balanced protein and fats.",
+            dailyIntake: "2.5-3 cups per day, divided into two meals.",
+            supplements: "Glucosamine and omega-3 fatty acids for joint and coat health."
+        },
+        exercise: "At least 1-2 hours of daily activity including walks, play, and mental stimulation.",
+        healthcare: {
+            commonIssues: "Hip dysplasia, progressive retinal atrophy, epilepsy.",
+            preventiveMeasures: "Regular vet check-ups, maintain healthy weight, routine eye exams."
+        },
+        grooming: "High grooming needs; daily brushing and regular professional grooming."
+    },
+    pom: {
+        overview: "Pomeranians are small, lively, and affectionate dogs. They make great companions for families and individuals.",
+        nutrition: {
+            overview: "High-quality dry dog food for small breeds.",
+            dailyIntake: "0.5-1 cup per day, divided into two meals.",
+            supplements: "Glucosamine and omega-3 fatty acids for joint and coat health."
+        },
+        exercise: "Short daily walks and indoor play; they are energetic despite small size.",
+        healthcare: {
+            commonIssues: "Dental issues, patellar luxation, tracheal collapse.",
+            preventiveMeasures: "Regular vet check-ups, maintain healthy weight, routine dental care."
+        },
+        grooming: "Moderate shedding; brush 2-3 times per week and bathe as needed."
+    },
+
+    //cats
+    persian: {
+        overview:,
+        nutrition:,
+        exercise:,
+        healthcare:,
+        grooming:,
+    },
+    siamese: {
+        overview:,
+        nutrition:,
+        exercise:,
+        healthcare:,
+        grooming:,
+    },
+    maineCoon: {
+        overview:,
+        nutrition:,
+        exercise:,
+        healthcare:,
+        grooming:,
+    },
+    exotic: {
+        overview:,
+        nutrition:,
+        exercise:,
+        healthcare:,
+        grooming:,
+    },
+    american: {
+        overview:,
+        nutrition:,
+        exercise:,
+        healthcare:,
+        grooming:,
+    },
+
+    //other pets
+    rabbit: {
+        overview:,
+        nutrition:,
+        exercise:,
+        healthcare:,
+        grooming:,
+    },
+    hamster: {
+        overview:,
+        nutrition:,
+        exercise:,
+        healthcare:,
+        grooming:,
+    },
+    parrot: {
+        overview:,
+        nutrition:,
+        exercise:,
+        healthcare:,
+        grooming:,
+    },
+    gecko: {
+        overview:,
+        nutrition:,
+        exercise:,
+        healthcare:,
+        grooming:,
+    },
+
+}
 
 function bestPet(scores) {
     let bestScore = -Infinity;
