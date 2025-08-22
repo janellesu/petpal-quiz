@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <h2>Your petPal match:</h2>
         <p>We recommend: ${topPets.join(", ")}</p>`;
 
+        //ToDO: fix answer display.
         //loops through answers and displays
         for (const [question, answer] of Object.entries(answers)) {
             const p = document.createElement("p");
@@ -86,6 +87,11 @@ const categories = {
     lowMaintenance: ["american", "hamster", "gecko"],
     modMaintenance: ["labrador", "golden", "frenchBulldog", "siamese", "exotic", "rabbit"],
     highMaintenance: ["german", "pom", "poodle", "persian", "maineCoon", "parrot"],
+
+    //pet categories
+    dogs: ["labrador", "golden", "frenchBulldog", "german", "poodle", "pom"],
+    cats: ["persian", "siamese", "maineCoon", "exotic", "american"],
+    otherPets: ["rabbit", "hamster", "gecko", "parrot"],
 
     //friendliness
     friendly: ["labrador", "golden", "frenchBulldog", "german", "poodle", "siamese", "maineCoon", "parrot"],
@@ -156,6 +162,8 @@ const scoring = {
         "moderate-noise": {lowNoise: 3, mediumNoise:3, noisy: 1},
         "noisy": {noisy: 3, mediumNoise: 3, lowNoise: 3}
     }
+
+
 };
 
 function bestPet(scores) {
@@ -163,7 +171,7 @@ function bestPet(scores) {
     let winners = [];
 
     for(const [pet, score] of Object.entries(scores)){
-        if(pet > bestScore){
+        if(score > bestScore){
             bestScore = score;
             winners = [pet];
         }
