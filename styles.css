@@ -122,3 +122,25 @@ label:hover {
     color: rgb(86, 159, 255);
     transition: all 0.3s ease;
 }
+
+.pet-result {
+    background-color: rgb(86, 159, 255);
+    border-radius: 1.5rem;
+    color: whitesmoke;
+    box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.2);
+}
+.pet-result h2 {
+    color: whitesmoke;
+    padding: 1rem;
+}
+.pet-result p {
+    color: whitesmoke;
+    padding: 1rem;
+}
+.pet-result:hover {
+    transform: scale(1.03);
+    transition: all 0.3s ease;
+}
+.pet-image {
+    max-width: 100%;
+}

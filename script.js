@@ -29,14 +29,26 @@ document.addEventListener("DOMContentLoaded", () => {
         if(!resultContainer) { //checks if null so no previous results
             resultContainer = document.createElement("div"); //creates div element
             resultContainer.id = "results"; //assigns results id to div
+            resultContainer.classList.add("pet-result"); //assigns css class to div
             quizSection.insertAdjacentElement("afterend", resultContainer); //appends after quiz section
         }
         //petcare guide
+        //TODO: add better headings
         resultContainer.innerHTML = `
         <h2>Your petPal match:</h2>
         <p>We recommend: ${topPets.join(", ")}</p>`;
         const petGuide = petCare[topPets[0]];
+        //displays pet image
+        if(petGuide.image) { //checks if pet has image
+            const img = document.createElement("img");
+            img.src = petGuide.image; //assigns image path to src
+            img.alt = topPets[0];
+            img.classList.add("pet-image");
+            resultContainer.appendChild(img);
+        }
         for(const category in petGuide){
+            //skips image
+            if(category === "image") continue;
             if(typeof petGuide[category] === "object"){
                 for(const subSection in petGuide[category]){
                     const p = document.createElement("p");
@@ -53,7 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 })
 
-// TODO: Match answers to pet rec and pet care
 
 let scores = {
     //dogs
@@ -190,7 +201,8 @@ const petCare = {
             commonIssues: "Hip/elbow dysplasia, obesity, ear infections, arthritis.",
             preventiveMeasures: "Weight management, regular vet visits, ear cleaning, joint supplements."
         },
-        grooming: "Brush 2-3 times per week; bathe monthly; clean ears weekly."
+        grooming: "Brush 2-3 times per week; bathe monthly; clean ears weekly.",
+        image: "assets/lab.jpeg"
     },
     golden: {
         overview: "Golden Retrievers are intelligent, loyal, and affectionate dogs, well-suited for families and therapy work.",
@@ -206,7 +218,8 @@ const petCare = {
             commonIssues: "Hip/elbow dysplasia, cancer, skin allergies, hypothyroidism.",
             preventiveMeasures: "Regular vet screenings, balanced diet, joint support, weight control."
         },
-        grooming: "Brush every other day; trim nails monthly; bathe every 6-8 weeks."
+        grooming: "Brush every other day; trim nails monthly; bathe every 6-8 weeks.",
+        image: "assets/golden.jpeg"
     },
     frenchBulldog: {
         overview: "French Bulldogs are affectionate, playful companion dogs with a brachycephalic (short-nosed) build.",
@@ -222,7 +235,8 @@ const petCare = {
             commonIssues: "Breathing issues, skin allergies, hip dysplasia, obesity.",
             preventiveMeasures: "Keep cool, monitor weight, regular vet care, wrinkle cleaning."
         },
-        grooming: "Weekly brushing; clean wrinkles daily; bathe every 4-6 weeks."
+        grooming: "Weekly brushing; clean wrinkles daily; bathe every 4-6 weeks.",
+        image: "assets/french.avif"
     },
     german: {
         overview: "German Shepherds are intelligent, loyal working dogs often used in police, service, and protection roles.",
@@ -238,7 +252,8 @@ const petCare = {
             commonIssues: "Hip/elbow dysplasia, bloat (GDV), degenerative myelopathy.",
             preventiveMeasures: "Controlled feeding (smaller meals), joint support, regular vet screenings."
         },
-        grooming: "Brush 2-3 times weekly (daily during shedding); bathe every 6-8 weeks."
+        grooming: "Brush 2-3 times weekly (daily during shedding); bathe every 6-8 weeks.",
+        image: "assets/german.jpeg"
     },
     poodle: {
         overview: "Poodles are intelligent, athletic, and hypoallergenic dogs available in toy, miniature, and standard sizes.",
@@ -254,7 +269,8 @@ const petCare = {
             commonIssues: "Hip dysplasia, eye issues, Addison’s disease, ear infections.",
             preventiveMeasures: "Regular vet visits, eye exams, ear cleaning, joint monitoring."
         },
-        grooming: "Professional grooming every 4-6 weeks; daily brushing to prevent mats."
+        grooming: "Professional grooming every 4-6 weeks; daily brushing to prevent mats.",
+        image: "assets/poodle.jpeg"
     },
     pom: {
         overview: "Pomeranians are small, energetic companion dogs with a fluffy double coat.",
@@ -270,7 +286,8 @@ const petCare = {
             commonIssues: "Dental disease, luxating patella, tracheal collapse.",
             preventiveMeasures: "Daily tooth brushing, weight control, regular vet care."
         },
-        grooming: "Brush 3-4 times weekly; trim nails monthly; bathe every 4-6 weeks."
+        grooming: "Brush 3-4 times weekly; trim nails monthly; bathe every 4-6 weeks.",
+        image: "assets/pom.jpeg"
     },
 
     // --- CATS ---
@@ -288,7 +305,8 @@ const petCare = {
             commonIssues: "Polycystic kidney disease, breathing issues, dental problems.",
             preventiveMeasures: "Regular vet exams, dental care, weight management."
         },
-        grooming: "Daily brushing; face cleaning; bathe monthly."
+        grooming: "Daily brushing; face cleaning; bathe monthly.",
+        image: "assets/persian.jpeg"
     },
     siamese: {
         overview: "Siamese cats are vocal, affectionate, and highly social with striking blue eyes.",
@@ -304,7 +322,8 @@ const petCare = {
             commonIssues: "Dental disease, respiratory issues, heart disease.",
             preventiveMeasures: "Regular dental care, vet screenings, maintain lean weight."
         },
-        grooming: "Weekly brushing; routine ear cleaning."
+        grooming: "Weekly brushing; routine ear cleaning.",
+        image: "assets/siamese.jpeg"
     },
     maineCoon: {
         overview: "Maine Coons are large, gentle cats with playful and dog-like personalities.",
@@ -320,7 +339,8 @@ const petCare = {
             commonIssues: "Hip dysplasia, hypertrophic cardiomyopathy (HCM), obesity.",
             preventiveMeasures: "Cardiac screening, weight management, joint support."
         },
-        grooming: "Brush 2-3 times weekly; bathe occasionally."
+        grooming: "Brush 2-3 times weekly; bathe occasionally.",
+        image: "assets/maine.jpeg"
     },
     exotic: {
         overview: "Exotic Shorthairs are affectionate, easygoing cats similar to Persians but with shorter coats.",
@@ -336,7 +356,8 @@ const petCare = {
             commonIssues: "Polycystic kidney disease, breathing issues, dental problems.",
             preventiveMeasures: "Vet screenings, weight control, dental care."
         },
-        grooming: "Brush 2-3 times weekly; eye/face cleaning."
+        grooming: "Brush 2-3 times weekly; eye/face cleaning.",
+        image: "assets/exotic.jpeg"
     },
     american: {
         overview: "American Shorthairs are friendly, adaptable cats with a strong build and hunting instincts.",
@@ -352,7 +373,8 @@ const petCare = {
             commonIssues: "Dental issues, obesity, hypertrophic cardiomyopathy (HCM).",
             preventiveMeasures: "Regular dental care, weight management, vet screenings."
         },
-        grooming: "Weekly brushing; routine nail trimming."
+        grooming: "Weekly brushing; routine nail trimming.",
+        image: "assets/american.jpeg"
     },
 
     //other pets
@@ -370,7 +392,8 @@ const petCare = {
             commonIssues: "Dental disease, gastrointestinal stasis, obesity, respiratory infections.",
             preventiveMeasures: "Regular dental checks, high-fiber diet, rabbit-safe environment, annual vet visits."
         },
-        grooming: "Brush weekly (daily during shedding season); check nails monthly; avoid bathing unless medically necessary."
+        grooming: "Brush weekly (daily during shedding season); check nails monthly; avoid bathing unless medically necessary.",
+        image: "assets/rabbit.webp"
     },
     hamster: {
         overview: "Hamsters are small, nocturnal rodents that enjoy burrowing, running, and chewing. They are best kept as single pets.",
@@ -386,7 +409,8 @@ const petCare = {
             commonIssues: "Wet tail (diarrhea), respiratory infections, dental overgrowth.",
             preventiveMeasures: "Clean cage regularly, provide chew toys, avoid sudden diet changes, and reduce stress."
         },
-        grooming: "Generally self-groom; provide sand bath for dwarf hamsters; no water baths."
+        grooming: "Generally self-groom; provide sand bath for dwarf hamsters; no water baths.",
+        image: "assets/hamster.jpeg"
     },
     parrot: {
         overview: "Parrots are highly intelligent, social birds that need constant mental stimulation and social interaction. Lifespan varies widely by species.",
@@ -402,7 +426,8 @@ const petCare = {
             commonIssues: "Feather plucking, obesity, nutritional deficiencies, psittacosis (parrot fever).",
             preventiveMeasures: "Regular avian vet visits, balanced diet, mental stimulation, clean environment."
         },
-        grooming: "Provide access to bathing (mist spray or shallow dish); trim nails/beak if overgrown (by vet); clip wings only if recommended."
+        grooming: "Provide access to bathing (mist spray or shallow dish); trim nails/beak if overgrown (by vet); clip wings only if recommended.",
+        image: "assets/parrot.jpeg"
     },
     gecko: {
         overview: "Leopard geckos are hardy, nocturnal reptiles that are relatively easy to care for. They require a warm, dry environment and proper enclosure setup.",
@@ -418,7 +443,8 @@ const petCare = {
             commonIssues: "Metabolic bone disease, impaction, shedding issues, respiratory infections.",
             preventiveMeasures: "Proper heat gradient (88-92°F basking spot), humidity control, supplement use, clean tank."
         },
-        grooming: "No brushing needed; provide humid hide to assist with shedding; check toes and tail for stuck shed."
+        grooming: "No brushing needed; provide humid hide to assist with shedding; check toes and tail for stuck shed.",
+        image: "assets/gecko.jpeg"
     }
 }
 
