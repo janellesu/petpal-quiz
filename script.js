@@ -31,9 +31,25 @@ document.addEventListener("DOMContentLoaded", () => {
             resultContainer.id = "results"; //assigns results id to div
             quizSection.insertAdjacentElement("afterend", resultContainer); //appends after quiz section
         }
+        //petcare guide
         resultContainer.innerHTML = `
         <h2>Your petPal match:</h2>
         <p>We recommend: ${topPets.join(", ")}</p>`;
+        const petGuide = petCare[topPets[0]];
+        for(const category in petGuide){
+            if(typeof petGuide[category] === "object"){
+                for(const subSection in petGuide[category]){
+                    const p = document.createElement("p");
+                    p.textContent = `${subSection}: ${petGuide[category][subSection]}`;
+                    resultContainer.appendChild(p);
+                }
+            } else {
+                const p = document.createElement("p");
+                p.textContent = `${category}: ${petGuide[category]}`;
+                resultContainer.appendChild(p);
+            }
+        };
+
     })
 })
 
