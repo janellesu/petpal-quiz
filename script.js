@@ -24,6 +24,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         
         const topPets = bestPet(scores);
+        //handles tie with random choice
+        let winner; 
+        if (topPets.length === 1) {
+            winner = topPets[0];
+        } else {
+            winner = topPets[Math.floor(Math.random() * topPets.length)];
+        }
         // Clear previous result
         let resultContainer = document.querySelector("#results");
         if(!resultContainer) { //checks if null so no previous results
@@ -35,14 +42,14 @@ document.addEventListener("DOMContentLoaded", () => {
         //petcare guide
         //TODO: add better headings
         resultContainer.innerHTML = `
-        <h2>Your petPal match:</h2>
-        <p>We recommend: ${topPets.join(", ")}</p>`;
-        const petGuide = petCare[topPets[0]];
+        <h1>Your Pet Pal match:</h1>
+        <h1>${petNames[winner]}!</h1>`;
+        const petGuide = petCare[winner];
         //displays pet image
         if(petGuide.image) { //checks if pet has image
             const img = document.createElement("img");
             img.src = petGuide.image; //assigns image path to src
-            img.alt = topPets[0];
+            img.alt = winner;
             img.classList.add("pet-image");
             resultContainer.appendChild(img);
         }
@@ -51,13 +58,19 @@ document.addEventListener("DOMContentLoaded", () => {
             if(category === "image") continue;
             if(typeof petGuide[category] === "object"){
                 for(const subSection in petGuide[category]){
+                    const h2 = document.createElement("h2");
                     const p = document.createElement("p");
-                    p.textContent = `${subSection}: ${petGuide[category][subSection]}`;
+                    h2.textContent = displayNames[subSection] || subSection;
+                    p.textContent = `${petGuide[category][subSection]}`;
+                    resultContainer.appendChild(h2);
                     resultContainer.appendChild(p);
                 }
             } else {
                 const p = document.createElement("p");
-                p.textContent = `${category}: ${petGuide[category]}`;
+                const h2 = document.createElement("h2");
+                h2.textContent = displayNames[category] || category;
+                p.textContent = `${petGuide[category]}`;
+                resultContainer.appendChild(h2);
                 resultContainer.appendChild(p);
             }
         };
@@ -132,13 +145,13 @@ const categories = {
 
 const scoring = {
     activity: {
-        "very-active": { largeDogs: 3, activeCats: 2},
-        "somewhat-active": { smallDogs: 3, otherPets: 1},
+        "very-active": { largeDogs: 3, activeCats: 3},
+        "somewhat-active": { smallDogs: 3, otherPets: 2},
         "not-active": { notActiveCats: 3, otherPets: 3}
     },
     home: {
         "small-home": {smallDogs: 3, otherPets:3, notActiveCats: 3 },
-        "medium-home": { activeCats: 3, parrot: 3, otherPets: 2},
+        "medium-home": { activeCats: 3, parrot: 3, otherPets: 3},
         "big-home": { largeDogs: 3}
     },
     time: {
@@ -152,9 +165,9 @@ const scoring = {
         "experienced": {dogs: 3, cats: 3, otherPets: 3}
     },
     "pet-interest": {
-        "dog-interest": {dogs: 5},
-        "cat-interest": {cats: 5},
-        "other-interest": {otherPets: 5}
+        "dog-interest": {dogs: 15},
+        "cat-interest": {cats: 15},
+        "other-interest": {otherPets: 15}
     },
     "grooming-importance": {
         "low-maintenance": {lowMaintenance: 3},
@@ -192,7 +205,7 @@ const petCare = {
         lifespan: "10-12 years",
         weight: "55-80 lbs",
         nutrition: {
-            overview: "Balanced diet with protein, healthy fats, and fiber. Labradors are prone to obesity, so portion control is important.",
+            nutritionOverview: "Balanced diet with protein, healthy fats, and fiber. Labradors are prone to obesity, so portion control is important.",
             dailyIntake: "2.5-3 cups of high-quality kibble split into 2 meals per day (adjust for activity level).",
             supplements: "Omega-3 for joints/coat, glucosamine for hip health, probiotics for digestion."
         },
@@ -209,7 +222,7 @@ const petCare = {
         lifespan: "10-12 years",
         weight: "55-75 lbs",
         nutrition: {
-            overview: "High-quality kibble or fresh food diet with lean protein and healthy fats.",
+            nutritionOverview: "High-quality kibble or fresh food diet with lean protein and healthy fats.",
             dailyIntake: "2-3 cups of kibble split into 2 meals per day.",
             supplements: "Fish oil for coat health, glucosamine/chondroitin for joints, antioxidants for immunity."
         },
@@ -226,7 +239,7 @@ const petCare = {
         lifespan: "10-12 years",
         weight: "16-28 lbs",
         nutrition: {
-            overview: "Moderate-calorie diet to prevent obesity, with easily digestible protein.",
+            nutritionOverview: "Moderate-calorie diet to prevent obesity, with easily digestible protein.",
             dailyIntake: "1-1.5 cups of high-quality kibble split into 2 meals daily.",
             supplements: "Omega-3 for skin, probiotics for digestion, joint support for mobility."
         },
@@ -243,7 +256,7 @@ const petCare = {
         lifespan: "9-13 years",
         weight: "50-90 lbs",
         nutrition: {
-            overview: "High-protein diet to support active lifestyle; watch for joint health.",
+            nutritionOverview: "High-protein diet to support active lifestyle; watch for joint health.",
             dailyIntake: "3-4 cups of high-quality kibble per day, split into 2 meals.",
             supplements: "Glucosamine/chondroitin for hips, omega-3 for coat/joints."
         },
@@ -260,7 +273,7 @@ const petCare = {
         lifespan: "12-15 years",
         weight: "Toy: 6-9 lbs, Miniature: 15-17 lbs, Standard: 40-70 lbs",
         nutrition: {
-            overview: "Balanced diet of protein, fiber, and fat; adjust portions by size.",
+            nutritionOverview: "Balanced diet of protein, fiber, and fat; adjust portions by size.",
             dailyIntake: "Toy: ½-1 cup; Mini: 1-2 cups; Standard: 2.5-3.5 cups daily (split into 2 meals).",
             supplements: "Fish oil for coat, glucosamine for joints, probiotics for digestion."
         },
@@ -277,7 +290,7 @@ const petCare = {
         lifespan: "12-16 years",
         weight: "3-7 lbs",
         nutrition: {
-            overview: "Small-breed diet with high-quality protein and calorie control.",
+            nutritionOverview: "Small-breed diet with high-quality protein and calorie control.",
             dailyIntake: "¼-½ cup split into 2-3 meals daily.",
             supplements: "Omega-3 for coat, dental chews for teeth, joint support as they age."
         },
@@ -296,7 +309,7 @@ const petCare = {
         lifespan: "12-17 years",
         weight: "7-12 lbs",
         nutrition: {
-            overview: "Balanced diet with protein and healthy fats, avoid obesity.",
+            nutritionOverview: "Balanced diet with protein and healthy fats, avoid obesity.",
             dailyIntake: "¼-½ cup of high-quality dry food, or 3-6 oz of wet food daily.",
             supplements: "Omega-3 for skin/coat, taurine for heart/vision."
         },
@@ -313,7 +326,7 @@ const petCare = {
         lifespan: "12-20 years",
         weight: "6-14 lbs",
         nutrition: {
-            overview: "High-protein diet to support lean muscle mass.",
+            nutritionOverview: "High-protein diet to support lean muscle mass.",
             dailyIntake: "¼-½ cup of dry food or 3-5 oz wet food daily.",
             supplements: "Taurine, probiotics for digestion."
         },
@@ -330,7 +343,7 @@ const petCare = {
         lifespan: "12-15 years",
         weight: "10-25 lbs",
         nutrition: {
-            overview: "Protein-rich diet suitable for large cats; monitor portions.",
+            nutritionOverview: "Protein-rich diet suitable for large cats; monitor portions.",
             dailyIntake: "½-1 cup of dry food or 6-9 oz wet food daily.",
             supplements: "Glucosamine for joints, taurine for heart health."
         },
@@ -347,7 +360,7 @@ const petCare = {
         lifespan: "12-15 years",
         weight: "8-15 lbs",
         nutrition: {
-            overview: "Balanced diet with protein and controlled calories.",
+            nutritionOverview: "Balanced diet with protein and controlled calories.",
             dailyIntake: "¼-½ cup of dry food or 3-6 oz wet food daily.",
             supplements: "Omega-3 for coat, taurine for heart/vision."
         },
@@ -364,7 +377,7 @@ const petCare = {
         lifespan: "15-20 years",
         weight: "8-15 lbs",
         nutrition: {
-            overview: "High-quality, protein-rich diet with portion control.",
+            nutritionOverview: "High-quality, protein-rich diet with portion control.",
             dailyIntake: "¼-½ cup of dry food or 3-6 oz wet food daily.",
             supplements: "Taurine, omega-3 for coat, probiotics for digestion."
         },
@@ -383,7 +396,7 @@ const petCare = {
         lifespan: "8-12 years (some breeds up to 15)",
         weight: "2-6 lbs (depending on breed; some giants exceed 10 lbs)",
         nutrition: {
-            overview: "Mainly hay-based diet with fresh vegetables and limited pellets.",
+            nutritionOverview: "Mainly hay-based diet with fresh vegetables and limited pellets.",
             dailyIntake: "Unlimited fresh hay; about 1/8-1/4 cup of high-fiber pellets per 5 lbs of body weight; 1-2 cups of leafy greens daily.",
             supplements: "Generally not required if diet is balanced; consult vet if deficiencies suspected."
         },
@@ -400,7 +413,7 @@ const petCare = {
         lifespan: "2-3 years",
         weight: "1-7 oz (Syrian up to 7 oz, dwarf species 1-2 oz)",
         nutrition: {
-            overview: "Balanced commercial hamster mix with occasional fresh foods.",
+            nutritionOverview: "Balanced commercial hamster mix with occasional fresh foods.",
             dailyIntake: "1-2 tablespoons of hamster mix per day; small portions of fresh fruits/veggies a few times weekly.",
             supplements: "Not usually required if fed a complete mix; occasional chew sticks for dental health."
         },
@@ -417,7 +430,7 @@ const petCare = {
         lifespan: "20-80 years (small parrots ~20 years; large macaws 60-80+ years)",
         weight: "1-4 oz (budgies) up to 2-4 lbs (large macaws/cockatoos)",
         nutrition: {
-            overview: "Pellet-based diet supplemented with fresh fruits, vegetables, and occasional seeds.",
+            nutritionOverview: "Pellet-based diet supplemented with fresh fruits, vegetables, and occasional seeds.",
             dailyIntake: "Pellets ~60-70% of diet; 1-2 small servings of fresh produce daily; seeds/nuts only as treats.",
             supplements: "Calcium (especially for breeding hens) and vitamin D if not exposed to sunlight; consult avian vet."
         },
@@ -434,7 +447,7 @@ const petCare = {
         lifespan: "10-20 years in captivity (with good care)",
         weight: "1.5-3 oz (adult average)",
         nutrition: {
-            overview: "Live insect diet; primarily crickets and mealworms, dusted with supplements.",
+            nutritionOverview: "Live insect diet; primarily crickets and mealworms, dusted with supplements.",
             dailyIntake: "Feed juveniles daily (5-7 insects); adults every other day (6-10 insects). Remove uneaten insects after 15-20 minutes.",
             supplements: "Calcium with vitamin D3 dusted on insects 2-3 times weekly; multivitamin once weekly."
         },
@@ -446,6 +459,38 @@ const petCare = {
         grooming: "No brushing needed; provide humid hide to assist with shedding; check toes and tail for stuck shed.",
         image: "assets/gecko.jpeg"
     }
+};
+//dictionary of display names
+const displayNames = {
+    overview: "General Overview",
+    lifespan: "Average Lifespan",
+    weight: "Average Weight",
+    nutritionOverview: "Nutrition Overview",
+    dailyIntake: "Daily Intake",
+    supplements: "Supplements",
+    exercise: "Exercise Needs",
+    commonIssues: "Common Healthcare Issues",
+    preventiveMeasures: "Healthcare Preventive Measures",
+    grooming: "Grooming needs"
+};
+const petNames = {
+    labrador: "Labrador Retriever",
+    golden: "Golden Retriever",
+    frenchBulldog: "French Bulldog",
+    german: "German Shepherd",
+    poodle: "Poodle",
+    pom: "Pomeranian",
+
+    maineCoon: "Maine Coon",
+    american: "American Shorthair",
+    exotic: "Exotic Shorthair",
+    persian: "Persian",
+    siamese: "Siamese",
+
+    hamster: "Hamster",
+    gecko: "Gecko",
+    parrot: "Parrot",
+    rabbit: "Rabbit"
 }
 
 function bestPet(scores) {
@@ -465,7 +510,7 @@ function bestPet(scores) {
 }
 const topPets = bestPet(scores);
 if(topPets.length == 1){
-    console.log("Best match:", topPets[0]);
+    console.log("Best match:", winner);
 }
 else {
     console.log("Multiple matches:", topPets.join(", "));
